@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->unsignedBigInteger('role_id')
-                    ->default(4)
+                    ->default(2)
                     ->comment('1:system-admin 2:church-staff 3:pastors 4:church-members');
             $table->timestamps();
         });
