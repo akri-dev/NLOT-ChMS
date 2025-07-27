@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 
 class CreateAdminUser extends Command
 {
-    protected $signature = 'app:create-admin-user {username} {email} {password}';
+    protected $signature = 'app:create-system-admin-user {username} {email} {password}';
     protected $description = 'Create a new system administrator user.';
 
     public function handle(): int
@@ -38,10 +38,10 @@ class CreateAdminUser extends Command
 
         try {
             // Find the 'admin' role by name
-            $adminRole = Role::where('role_name', 'admin')->first();
+            $adminRole = Role::where('role_name', 'system-admin')->first();
 
             if (!$adminRole) {
-                $this->error('The "admin" role does not exist. Please run `php artisan db:seed` first to create roles.');
+                $this->error('The "system-admin" role does not exist. Please run `php artisan db:seed` first to create roles.');
                 return 1;
             }
 
@@ -52,7 +52,7 @@ class CreateAdminUser extends Command
                 'role_id' => $adminRole->id, // Assign the admin role ID
             ]);
 
-            $this->info("Admin user '{$name}' created successfully with email '{$email}'.");
+            $this->info("System Admin user '{$name}' created successfully with email '{$email}'.");
             return 0;
 
         } catch (\Exception $e) {
