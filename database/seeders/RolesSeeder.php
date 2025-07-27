@@ -13,10 +13,10 @@ class RolesSeeder extends Seeder
     public function run(): void
     {
         DB::table('roles')->insertOrIgnore([ // Using insertOrIgnore to prevent duplicates on re-seed
-            ['name' => 'system-admin', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'ministry-leader', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'ministry-staff', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'church-member', 'created_at' => now(), 'updated_at' => now()],
+            ['role_name' => 'system-admin', 'created_at' => now(), 'updated_at' => now()],
+            ['role_name' => 'ministry-leader', 'created_at' => now(), 'updated_at' => now()],
+            ['role_name' => 'ministry-staff', 'created_at' => now(), 'updated_at' => now()],
+            ['role_name' => 'church-member', 'created_at' => now(), 'updated_at' => now()],
         ]);
     }
 }
