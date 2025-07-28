@@ -23,7 +23,7 @@ export interface NavItem {
 }
 
 export interface SharedData {
-    username: string;
+    name: string;
     quote: { message: string; author: string };
     auth: Auth;
     ziggy: Config & { location: string };
@@ -32,8 +32,13 @@ export interface SharedData {
 }
 
 export interface User {
+<<<<<<< HEAD
     user_id: number;
     username: string;
+=======
+    id: number;
+    name: string;
+>>>>>>> parent of 73d0a91 (tweaked app header and user info)
     email: string;
     avatar?: string;
     email_verified_at: string | null;
