@@ -32,22 +32,8 @@ export interface SharedData {
 }
 
 export interface User {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    user_id: number;
-=======
     id: number;
->>>>>>> parent of 681d914 (revised variables for tests)
     username: string;
-=======
-    id: number;
-    name: string;
->>>>>>> parent of 73d0a91 (tweaked app header and user info)
-=======
-    id: number;
-    name: string;
->>>>>>> parent of 73d0a91 (tweaked app header and user info)
     email: string;
     avatar?: string;
     email_verified_at: string | null;
