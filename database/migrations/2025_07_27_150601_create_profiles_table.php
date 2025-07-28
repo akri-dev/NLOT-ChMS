@@ -36,7 +36,7 @@ return new class extends Migration
                 ->nullable();
 
             $table->foreign('user_id')
-                ->references('user_id')
+                ->references('id')
                 ->on('users')
                 ->onDelete('set null');
         });
