@@ -58,23 +58,23 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class);
     }
 
-    public function isAdmin(): bool
-    {
-        return $this->role && $this->role->name === 'system-admin';
-    }
+    // public function isAdmin(): bool
+    // {
+    //     return $this->role && $this->role->name === 'system-admin';
+    // }
 
-    public function isLeader(): bool
-    {
-        return $this->role && $this->role->name === 'ministry-leader';
-    }
+    // public function isLeader(): bool
+    // {
+    //     return $this->role && $this->role->name === 'ministry-leader';
+    // }
 
-    public function isStaff(): bool
-    {
-        return $this->role && $this->role->name === 'ministry-staff';
-    }
+    // public function isStaff(): bool
+    // {
+    //     return $this->role && $this->role->name === 'ministry-staff';
+    // }
 
-    public function isMember(): bool
-    {
-        return $this->role && $this->role->name === 'church-member';
-    }
+    // public function isMember(): bool
+    // {
+    //     return $this->role && $this->role->name === 'church-member';
+    // }
 }

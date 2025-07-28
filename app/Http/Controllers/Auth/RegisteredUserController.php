@@ -38,7 +38,7 @@ class RegisteredUserController extends Controller
         ]);
 
         // Find the 'member' role
-        $memberRole = Role::where('role_name', 'member')->first();
+        $memberRole = Role::where('role_name', 'church-member')->first();
 
         // Handle case where role might not exist (e.g., if you haven't seeded roles yet)
         if (!$memberRole) {
