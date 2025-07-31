@@ -60,21 +60,21 @@ class User extends Authenticatable
 
     public function isAdmin(): bool
     {
-        return $this->role && $this->role->name === 'system-admin';
+        return $this->role && $this->role->role_name === 'system-admin';
     }
 
     public function isLeader(): bool
     {
-        return $this->role && $this->role->name === 'ministry-leader';
+        return $this->role && $this->role->role_name === 'ministry-leader';
     }
 
     public function isStaff(): bool
     {
-        return $this->role && $this->role->name === 'ministry-staff';
+        return $this->role && $this->role->role_name === 'ministry-staff';
     }
 
     public function isMember(): bool
     {
-        return $this->role && $this->role->name === 'church-member';
+        return $this->role && $this->role->role_name === 'church-member';
     }
 }
