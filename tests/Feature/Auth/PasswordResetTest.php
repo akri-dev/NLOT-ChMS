@@ -3,6 +3,7 @@
 namespace Tests\Feature\Auth;
 
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Notification;
@@ -22,8 +23,8 @@ class PasswordResetTest extends TestCase
     public function test_reset_password_link_can_be_requested()
     {
         Notification::fake();
-
-        $user = User::factory()->create();
+        $role = Role::factory()->churchMember()->create();
+        $user = User::factory()->create(['role_id' => $role->id]);
 
         $this->post('/forgot-password', ['email' => $user->email]);
 
@@ -33,8 +34,8 @@ class PasswordResetTest extends TestCase
     public function test_reset_password_screen_can_be_rendered()
     {
         Notification::fake();
-
-        $user = User::factory()->create();
+        $role = Role::factory()->churchMember()->create();
+        $user = User::factory()->create(['role_id' => $role->id]);
 
         $this->post('/forgot-password', ['email' => $user->email]);
 
@@ -50,8 +51,8 @@ class PasswordResetTest extends TestCase
     public function test_password_can_be_reset_with_valid_token()
     {
         Notification::fake();
-
-        $user = User::factory()->create();
+        $role = Role::factory()->churchMember()->create();
+        $user = User::factory()->create(['role_id' => $role->id]);
 
         $this->post('/forgot-password', ['email' => $user->email]);
 

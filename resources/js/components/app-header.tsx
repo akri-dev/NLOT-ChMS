@@ -21,6 +21,12 @@ const mainNavItems: NavItem[] = [
         href: '/dashboard',
         icon: LayoutGrid,
     },
+
+    {
+        title: 'User Management',
+        href: '/admin/users',
+        icon: LayoutGrid,
+    }
 ];
 
 const rightNavItems: NavItem[] = [
@@ -71,6 +77,7 @@ export function AppHeader({ breadcrumbs = [] }: AppHeaderProps) {
                                                     {item.icon && <Icon iconNode={item.icon} className="h-5 w-5" />}
                                                     <span>{item.title}</span>
                                                 </Link>
+                                            
                                             ))}
                                         </div>
 
