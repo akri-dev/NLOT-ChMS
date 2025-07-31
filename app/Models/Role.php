@@ -14,6 +14,6 @@ class Role extends Model
     // Define the inverse relationship: A role can have many users
     public function users()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(User::class, 'role_id');
     }
 }
