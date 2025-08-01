@@ -33,8 +33,6 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
-
-
 export default function userManagement({ users }) {
     const { auth, flash } = usePage().props;
     const [editingUsers, setEditingUsers] = useState({});
@@ -137,6 +135,9 @@ export default function userManagement({ users }) {
         }
     };
 
+    // Helper to check if any user is being edited
+    const isAnyUserEditing = Object.values(editingUsers).some(isEditing => isEditing);
+
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="User Management" />
@@ -201,44 +202,49 @@ export default function userManagement({ users }) {
                                     )}
                                 </TableCell>
                                 <TableCell>
-                                    {editingUsers[user.id] ? (
+                                    {/* Conditional rendering: Do not show buttons for the logged-in user */}
+                                    {user.id !== auth.user.id && (editingUsers[user.id] || !isAnyUserEditing) ? (
                                         <>
-                                            <Button
-                                                variant="outline"
-                                                className='mr-1 bg-green-500 text-stone-50 hover:bg-green-600'
-                                                onClick={() => saveChanges(user.id)}
-                                                disabled={processing || data.role_id === user.role?.id}
-                                            >
-                                                {processing ? 'Saving...' : 'Save'}
-                                            </Button>
-                                            <Button
-                                                variant="outline"
-                                                className='bg-red-500 text-stone-50 hover:bg-red-600'
-                                                onClick={() => toggleEditMode(user.id)}
-                                                disabled={processing}
-                                            >
-                                                Cancel
-                                            </Button>
+                                            {editingUsers[user.id] ? (
+                                                <>
+                                                    <Button
+                                                        variant="outline"
+                                                        className='mr-1 bg-green-500 text-stone-50 hover:bg-green-600'
+                                                        onClick={() => saveChanges(user.id)}
+                                                        disabled={processing || data.role_id === user.role?.id}
+                                                    >
+                                                        {processing ? 'Saving...' : 'Save'}
+                                                    </Button>
+                                                    <Button
+                                                        variant="outline"
+                                                        className='bg-red-500 text-stone-50 hover:bg-red-600'
+                                                        onClick={() => toggleEditMode(user.id, user.role?.id)}
+                                                        disabled={processing}
+                                                    >
+                                                        Cancel
+                                                    </Button>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <Button
+                                                        variant="outline"
+                                                        className='mr-1 bg-blue-600 text-stone-50 hover:bg-blue-700'
+                                                        onClick={() => toggleEditMode(user.id, user.role?.id)}
+                                                    >
+                                                        Edit
+                                                    </Button>
+                                                    <Button
+                                                        variant="outline"
+                                                        className='bg-red-500 text-stone-50 hover:bg-red-600'
+                                                        onClick={() => handleDeleteClick(user)}
+                                                        disabled={isDeleting}
+                                                    >
+                                                        Delete
+                                                    </Button>
+                                                </>
+                                            )}
                                         </>
-                                    ) : (
-                                        <>
-                                            <Button
-                                                variant="outline"
-                                                className='mr-1 bg-blue-600 text-stone-50 hover:bg-blue-700'
-                                                onClick={() => toggleEditMode(user.id, user.role?.id)}
-                                            >
-                                                Edit
-                                            </Button>
-                                            <Button
-                                                variant="outline"
-                                                className='bg-red-500 text-stone-50 hover:bg-red-600'
-                                                onClick={() => handleDeleteClick(user)}
-                                                disabled={isDeleting}
-                                            >
-                                                Delete
-                                            </Button>
-                                        </>
-                                    )}
+                                    ) : null}
                                 </TableCell>
                             </TableRow>
                         ))}
