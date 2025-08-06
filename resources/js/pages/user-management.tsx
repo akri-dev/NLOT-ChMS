@@ -28,7 +28,7 @@ import {
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'User Management',
+        title: 'User Accounts',
         href: '/admin/users',
     },
 ];
