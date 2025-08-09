@@ -20,6 +20,7 @@ class Profile extends Model
         'address',
         'marital_status',
         'anniversary_date',
+        'number_of_children',
         'membership_status',
         'baptism_date',
         'allergies_medical_notes',
@@ -35,8 +36,11 @@ class Profile extends Model
         'baptism_date' => 'date',
     ];
 
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+
+    
 }

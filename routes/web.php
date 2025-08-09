@@ -23,6 +23,7 @@ Route::middleware(['auth', 'can:system-admin'])->group(function () {
     Route::delete('/admin/users/{user}', [UserController::class, 'destroy'])->name('admin.users.destroy');
 
     Route::get('/admin/profiles', [ProfileController::class, 'index'])->name('admin.profiles.index');
+    Route::get('/admin/profiles/create', [ProfileController::class, 'create'])->name('admin.profiles.create');
     Route::put('/admin/profiles/{profile}', [ProfileController::class, 'update'])->name('admin.profiles.update');
     Route::delete('/admin/profiles/{profile}', [ProfileController::class, 'destroy'])->name('admin.profiles.destroy');
 });

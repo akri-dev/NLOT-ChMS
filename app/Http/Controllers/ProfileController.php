@@ -6,9 +6,17 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Profile;
 
 class ProfileController extends Controller
 {
+
+    private $profile;
+
+    public function __construct(Profile $profile) {
+        $this->profile = $profile;
+    }
+    
     /**
      * Display a listing of the resource.
      */
@@ -25,7 +33,29 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        //
+        $new_profile = [
+            'first_name' => 'Alec Joseph',
+            'middle_name' => 'Samodio',
+            'last_name' => 'Burio',
+            'nickname',
+            'date_of_birth' => '1997-05-01',
+            'gender' => 'Male',
+            'contact_number',
+            'address',
+            'marital_status' => 'Single',
+            'anniversary_date',
+            'number_of_children',
+            'membership_status',
+            'baptism_date',
+            'allergies_medical_notes',
+            'emergency_contact_name',
+            'emergency_contact_phone',
+            'profile_photo_url',
+            'user_id'
+        ];
+
+        $this->profile->create($new_profile);
+        return "Saved!";
     }
 
     /**
